@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saree Care & Concierge Contact — NOOLU</title>
+  <meta name="description" content="Saree wash and preservation tips, India Post parcel information, and direct WhatsApp concierge assistance for Noolu sarees.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Ribbon -->
+  <div class="announcement-bar">
+    <span>Free Pan-India Delivery via <strong>India Post Speed Parcel</strong> • Live Stock Sync</span>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo-wrap">
+        <img src="assets/images/noolu-logo.jpg" alt="Noolu" class="brand-logo-img">
+        <div class="brand-logo-text">
+          <span class="brand-logo-name">NOOLU</span>
+          <span class="brand-logo-tagline">Every thread tells a story</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">The Collection</a></li>
+          <li><a href="story.html">Our Story</a></li>
+          <li><a href="contact.html" class="active">Care & Contact</a></li>
+          <li><a href="admin.html" style="color: var(--gold-dark); font-weight: 600;">Inventory Admin</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-sm btn-outline" onclick="openWhatsAppInquiry()">Concierge</button>
+        <button class="btn-icon js-open-cart" aria-label="Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-count-badge" style="display: none;">0</span>
+        </button>
+
+        <button class="btn-icon mobile-menu-btn" aria-label="Toggle Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Header -->
+  <section style="background: var(--cream); padding: 4rem 0 3rem 0; border-bottom: 1px solid var(--border-gold); text-align: center;">
+    <div class="container container-narrow">
+      <div class="ornament-divider">
+        <span class="ornament-icon">❦</span>
+      </div>
+      <h1 class="display-title" style="color: var(--maroon);">Care, Shipping & Concierge</h1>
+      <p class="section-subtitle" style="margin-bottom: 0;">
+        From taking care of heirloom weaves to tracking your India Post parcels, we are here for you.
+      </p>
+    </div>
+  </section>
+
+  <!-- Two Column Content: Contact & WhatsApp on Left, Care & FAQs on Right -->
+  <main style="padding: 5rem 0; background: var(--ivory);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: 1fr 1.3fr; gap: 3.5rem; align-items: start;">
+        
+        <!-- Left: Direct Concierge & Contact Form -->
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
+          
+          <div style="background: var(--white); border: 2px solid var(--border-gold); border-radius: var(--radius-md); padding: 2.5rem; box-shadow: var(--shadow-sm);">
+            <span style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dark);">Personal Touch</span>
+            <h2 style="font-size: 1.8rem; color: var(--maroon); margin: 0.4rem 0 1rem 0;">Direct WhatsApp Concierge</h2>
+            <p style="font-size: 0.95rem; color: var(--charcoal-muted); line-height: 1.6; margin-bottom: 1.75rem;">
+              Have questions about saree drape weight, blouse matching, or custom requests? Chat directly with Bhoomika and the Noolu team.
+            </p>
+
+            <button class="btn btn-whatsapp btn-block" onclick="openWhatsAppInquiry()">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              Chat on WhatsApp Now
+            </button>
+          </div>
+
+          <!-- Email Inquiry Form -->
+          <div style="background: var(--white); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2.5rem; box-shadow: var(--shadow-sm);">
+            <h3 style="font-size: 1.4rem; color: var(--maroon); margin-bottom: 0.75rem;">Send a Note</h3>
+            <p style="font-size: 0.88rem; color: var(--charcoal-muted); margin-bottom: 1.5rem;">We typically reply within 24 business hours.</p>
+
+            <form onsubmit="event.preventDefault(); showToast('Thank you! Your note has been received.', 'success'); this.reset();" style="display: flex; flex-direction: column; gap: 1rem;">
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 600; display: block; margin-bottom: 0.35rem;">Your Name</label>
+                <input type="text" required placeholder="e.g. Priya Sharma" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-gold); border-radius: var(--radius-sm); font-family: inherit;">
+              </div>
+
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 600; display: block; margin-bottom: 0.35rem;">Email or Phone</label>
+                <input type="text" required placeholder="Email or 10-digit WhatsApp number" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-gold); border-radius: var(--radius-sm); font-family: inherit;">
+              </div>
+
+              <div>
+                <label style="font-size: 0.82rem; font-weight: 600; display: block; margin-bottom: 0.35rem;">Message / Saree Query</label>
+                <textarea rows="4" required placeholder="Tell us how we can help you..." style="width: 100%; padding: 0.75rem; border: 1px solid var(--border-gold); border-radius: var(--radius-sm); font-family: inherit;"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="margin-top: 0.5rem;">Send Message</button>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- Right: Care 101, Shipping Policies, FAQs -->
+        <div style="display: flex; flex-direction: column; gap: 2.5rem;">
+
+          <!-- Saree Wash & Care 101 -->
+          <div style="background: var(--white); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2.5rem;" id="care">
+            <span style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dark);">Preserving Your Weaves</span>
+            <h2 style="font-size: 1.8rem; color: var(--maroon); margin: 0.4rem 0 1.25rem 0;">Saree Care 101</h2>
+
+            <div style="display: flex; flex-direction: column; gap: 1.5rem; font-size: 0.95rem; line-height: 1.65; color: var(--charcoal);">
+              <div>
+                <strong style="color: var(--maroon-dark); font-size: 1.05rem;">1. Ilkal & Handloom Silk Sarees</strong>
+                <p style="color: var(--charcoal-muted); margin-top: 0.25rem;">
+                  We recommend dry-cleaning for the first 2 washes to seal the natural vegetable dyes and maintain the silk sheen of the Tope Teni pallu. For later washes, use gentle cold hand-washing with mild liquid detergent. Never wring or dry in direct harsh sunlight.
+                </p>
+              </div>
+
+              <div>
+                <strong style="color: var(--maroon-dark); font-size: 1.05rem;">2. Everyday Cottons & Linens</strong>
+                <p style="color: var(--charcoal-muted); margin-top: 0.25rem;">
+                  Hand wash or delicate machine wash in cold water using a mild soap. If you prefer a crisp, structured drape, light starch can be applied. Iron while slightly damp on medium setting.
+                </p>
+              </div>
+
+              <div>
+                <strong style="color: var(--maroon-dark); font-size: 1.05rem;">3. Storage & Folding Advice</strong>
+                <p style="color: var(--charcoal-muted); margin-top: 0.25rem;">
+                  Store handloom sarees wrapped in a pure cotton or muslin fabric. Change the fold creases every 3–4 months to avoid permanent stress marks along the zari. Keep cedar balls or dried neem leaves in your wardrobe instead of harsh chemical mothballs.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- India Post Shipping Policy -->
+          <div style="background: var(--cream); border: 1px solid var(--border-gold); border-radius: var(--radius-md); padding: 2.5rem;" id="shipping">
+            <span style="font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dark);">Logistics & Delivery</span>
+            <h2 style="font-size: 1.8rem; color: var(--maroon); margin: 0.4rem 0 1rem 0;">India Post Pan-India Delivery</h2>
+            <p style="font-size: 0.95rem; color: var(--charcoal); line-height: 1.65; margin-bottom: 1.25rem;">
+              We partner proudly with the <strong>Indian Postal Service (India Post Speed Parcel)</strong>. This guarantees that whether you reside in a metro city or a remote town, your Noolu saree reaches your doorstep safely.
+            </p>
+
+            <ul style="padding-left: 1.25rem; font-size: 0.92rem; color: var(--charcoal-muted); display: flex; flex-direction: column; gap: 0.6rem;">
+              <li><strong>Dispatch Window:</strong> All orders are packed and dispatched within 24–48 hours from Karnataka.</li>
+              <li><strong>Delivery Timeline:</strong> Typically 4–7 business days depending on pin code.</li>
+              <li><strong>Tracking:</strong> A Speed Post tracking consignment number is sent directly to your WhatsApp and email upon dispatch.</li>
+              <li><strong>Packaging:</strong> Safely packed in moisture-resistant protective layers and accompanied by your signature Noolu Welcome Card.</li>
+            </ul>
+          </div>
+
+          <!-- Frequently Asked Questions Accordion -->
+          <div style="background: var(--white); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 2.5rem;">
+            <h3 style="font-size: 1.5rem; color: var(--maroon); margin-bottom: 1.25rem;">Frequently Asked Questions</h3>
+
+            <div class="accordion-group">
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <span>Is the blouse piece included with every saree?</span>
+                  <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-body" style="display: none;">
+                  <p>Yes, all our sarees include an unstitched 80cm blouse piece (either running matching fabric or a coordinated contrast piece with zari border) as specified on each saree page.</p>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <span>Are the photos true to actual saree color?</span>
+                  <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-body" style="display: none;">
+                  <p>We shoot our sarees in soft, natural ambient daylight without heavy filtering to represent the authentic weave color. Slight variations may occur due to individual phone screen calibrations.</p>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <span>What if I need help deciding on a gift or drape?</span>
+                  <span class="accordion-icon">+</span>
+                </button>
+                <div class="accordion-body" style="display: none;">
+                  <p>You can tap the WhatsApp Concierge button at any time! We are always happy to share additional photos, video drape snippets, or styling suggestions.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="brand-logo-wrap">
+            <img src="assets/images/noolu-logo.jpg" alt="Noolu" class="brand-logo-img">
+            <div class="brand-logo-text">
+              <span class="brand-logo-name" style="color: var(--gold-light);">NOOLU</span>
+              <span class="brand-logo-tagline" style="color: var(--sand);">Every thread tells a story</span>
+            </div>
+          </div>
+          <p>A boutique celebration of beautiful sarees, timeless weaves, and the enduring elegance of Indian tradition.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="shop.html?category=ilkal">Ilkal Sarees</a></li>
+            <li><a href="shop.html?category=cotton">Everyday Cottons</a></li>
+            <li><a href="shop.html?category=silk">Occasion Silks</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>About Noolu</h4>
+          <ul>
+            <li><a href="story.html">Bhoomika's Journey</a></li>
+            <li><a href="contact.html#care">Wash & Saree Care</a></li>
+            <li><a href="contact.html#shipping">India Post Shipping</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Concierge & Orders</h4>
+          <ul>
+            <li><a href="javascript:void(0)" onclick="openWhatsAppInquiry()">WhatsApp Inquiries</a></li>
+            <li><a href="contact.html">Send a Note</a></li>
+            <li><a href="admin.html">Inventory Manager</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 NOOLU. All rights reserved. Handcrafted in India.</span>
+        <span>India Post Parcel Delivery Across All Pin Codes</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Concierge Pill -->
+  <a href="javascript:void(0)" onclick="openWhatsAppInquiry()" class="floating-concierge-pill" aria-label="Chat on WhatsApp">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    <span>Chat with Bhoomika</span>
+  </a>
+
+  <!-- Cart Slide-Over Drawer -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart">
+    <div class="cart-drawer-header">
+      <h3>Your Saree Bag</h3>
+      <button class="btn-icon" id="cartDrawerClose" aria-label="Close Bag">✕</button>
+    </div>
+    <div class="cart-drawer-items" id="cartDrawerItems"></div>
+    <div class="cart-drawer-footer">
+      <div class="cart-shipping-note">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>Eligible for Free Speed Post Delivery across India</span>
+      </div>
+      <div class="cart-summary-row">
+        <span>Subtotal</span>
+        <span class="cart-total-price" id="cartTotalPrice">₹0</span>
+      </div>
+      <button class="btn btn-primary btn-block" id="cartCheckoutBtn">
+        Confirm Order & Decrement Stock (-1)
+      </button>
+    </div>
+  </aside>
+
+  <!-- Scripts -->
+  <script src="data/sarees.js"></script>
+  <script src="assets/js/inventory.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

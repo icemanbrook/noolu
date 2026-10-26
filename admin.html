@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory & Stock Manager — NOOLU Admin</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .stats-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .stat-card-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--charcoal-muted);
+    }
+    .stat-card-value {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--maroon);
+      margin-top: 0.25rem;
+      font-family: var(--font-serif);
+    }
+  </style>
+</head>
+<body style="background: #F8F6F2;">
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo-wrap">
+        <img src="assets/images/noolu-logo.jpg" alt="Noolu" class="brand-logo-img">
+        <div class="brand-logo-text">
+          <span class="brand-logo-name">NOOLU</span>
+          <span class="brand-logo-tagline">Admin Inventory Portal</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">← Back to Website</a></li>
+          <li><a href="shop.html">The Collection</a></li>
+          <li><a href="admin.html" class="active">Live Inventory</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-gold btn-sm" onclick="window.NooluDB.exportToCSV()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export to Excel (CSV)
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Main Content -->
+  <main class="admin-section">
+    <div class="container">
+      
+      <!-- Top Overview Stats -->
+      <div class="stats-card-grid">
+        <div class="stat-card">
+          <div class="stat-card-label">Total Saree SKUs</div>
+          <div class="stat-card-value" id="statTotalSkus">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Total Units in Stock</div>
+          <div class="stat-card-value" id="statTotalUnits" style="color: #15803D;">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Low Stock Alerts (≤2)</div>
+          <div class="stat-card-value" id="statLowStock" style="color: #D97706;">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-label">Total Orders Logged</div>
+          <div class="stat-card-value" id="statTotalOrders" style="color: var(--maroon);">0</div>
+        </div>
+      </div>
+
+      <!-- Action & Controls Bar -->
+      <div class="admin-header-card">
+        <div>
+          <h1 style="font-size: 1.8rem; color: var(--maroon); margin-bottom: 0.35rem;">Real-Time Saree Inventory</h1>
+          <p style="font-size: 0.9rem; color: var(--charcoal-muted);">
+            Matches your Excel sheet format. Every website purchase automatically deducts <strong>-1</strong> from this table.
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button class="btn btn-primary btn-sm" onclick="openAddSareeModal()">
+            + Add New Saree
+          </button>
+          <button class="btn btn-outline btn-sm" onclick="simulateRandomOrder()">
+            ⚡ Simulate Customer Purchase (-1)
+          </button>
+          <button class="btn btn-sm" style="border: 1px solid var(--border-subtle); color: var(--charcoal-muted);" onclick="if(confirm('Reset all quantities back to default demo catalog?')) { window.NooluDB.resetToDefaults(); showToast('Reset to defaults', 'info'); renderAdminTable(); }">
+            Reset Demo Data
+          </button>
+        </div>
+      </div>
+
+      <!-- Inventory Table -->
+      <div class="admin-table-card">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Preview</th>
+              <th>Product ID (SKU)</th>
+              <th>Saree Name</th>
+              <th>Category</th>
+              <th>Loom</th>
+              <th>Price (INR)</th>
+              <th>Live Stock</th>
+              <th>Status</th>
+              <th>Quick Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminInventoryTableBody">
+            <!-- Rendered by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Orders & Dispatch Log (India Post) -->
+      <div style="margin-top: 4rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <div>
+            <h2 style="font-size: 1.6rem; color: var(--maroon);">Recent Orders (India Post Dispatch Queue)</h2>
+            <p style="font-size: 0.88rem; color: var(--charcoal-muted);">Logged automatically whenever an order is completed.</p>
+          </div>
+        </div>
+
+        <div class="admin-table-card">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Product SKU</th>
+                <th>Saree Name & Color</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th>Log Date</th>
+                <th>Carrier</th>
+              </tr>
+            </thead>
+            <tbody id="adminOrdersTableBody">
+              <!-- Rendered by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Cloud DB Integration Note -->
+      <div style="margin-top: 3.5rem; background: var(--cream); border: 1px solid var(--border-gold); border-radius: var(--radius-md); padding: 2rem;">
+        <h3 style="font-size: 1.25rem; color: var(--maroon); margin-bottom: 0.5rem;">⚡ Free Cloud Database Integration Guide (Firebase / Supabase)</h3>
+        <p style="font-size: 0.92rem; color: var(--charcoal); line-height: 1.6; margin-bottom: 1rem;">
+          Right now, all inventory and orders run seamlessly via persistent local storage with reactive `-1` stock deduction. To connect Google Firebase Firestore for team-wide cloud syncing across multiple devices:
+        </p>
+        <ol style="padding-left: 1.5rem; font-size: 0.88rem; color: var(--charcoal-muted); line-height: 1.6;">
+          <li>Create a free Firebase project at <a href="https://console.firebase.google.com" target="_blank" style="color: var(--maroon); text-decoration: underline;">console.firebase.google.com</a>.</li>
+          <li>Enable <strong>Cloud Firestore</strong> in test mode.</li>
+          <li>Paste your Firebase Web configuration keys into <code>assets/js/inventory.js</code>. The system automatically syncs both ways!</li>
+        </ol>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Add Saree Modal -->
+  <div id="addSareeModal" style="display: none; position: fixed; inset: 0; background: rgba(30,26,26,0.6); backdrop-filter: blur(4px); z-index: 500; align-items: center; justify-content: center; padding: 1rem;">
+    <div style="background: var(--white); border: 2px solid var(--gold); border-radius: 12px; max-width: 520px; width: 100%; padding: 2rem; box-shadow: var(--shadow-lg);">
+      <h3 style="font-size: 1.5rem; color: var(--maroon); margin-bottom: 1rem;">Add New Saree to Inventory</h3>
+      
+      <form id="addSareeForm" onsubmit="handleAddNewSaree(event)" style="display: flex; flex-direction: column; gap: 0.9rem;">
+        <div>
+          <label style="font-size: 0.8rem; font-weight: 600;">Product ID (From your Excel sheet)</label>
+          <input type="text" id="newSku" required placeholder="e.g. NLU-ILK-015" style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-gold); border-radius: 4px;">
+        </div>
+
+        <div>
+          <label style="font-size: 0.8rem; font-weight: 600;">Saree Name</label>
+          <input type="text" id="newName" required placeholder="e.g. Kaveri Pure Silk Ilkal" style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-gold); border-radius: 4px;">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 600;">Category</label>
+            <select id="newCategory" style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-gold); border-radius: 4px;">
+              <option value="ilkal">Ilkal</option>
+              <option value="cotton">Cotton</option>
+              <option value="silk">Silk</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 600;">Loom</label>
+            <select id="newLoom" style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-gold); border-radius: 4px;">
+              <option value="Handloom">Handloom</option>
+              <option value="Powerloom">Powerloom</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 600;">Price (INR)</label>
+            <input type="number" id="newPrice" required min="100" placeholder="e.g. 3500" style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-gold); border-radius: 4px;">
+          </div>
+          <div>
+            <label style="font-size: 0.8rem; font-weight: 600;">Initial Stock</label>
+            <input type="number" id="newStock" required min="0" value="3" style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-gold); border-radius: 4px;">
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1rem;">
+          <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('addSareeModal').style.display = 'none';">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Add to Inventory</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data/sarees.js"></script>
+  <script src="assets/js/inventory.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    function renderAdminTable() {
+      const tbody = document.getElementById('adminInventoryTableBody');
+      const ordersTbody = document.getElementById('adminOrdersTableBody');
+      if (!tbody) return;
+
+      const products = window.NooluDB.getAll();
+      const orders = window.NooluDB.getOrders();
+
+      // Update Top Stats
+      document.getElementById('statTotalSkus').textContent = products.length;
+      document.getElementById('statTotalUnits').textContent = products.reduce((sum, p) => sum + p.stock, 0);
+      document.getElementById('statLowStock').textContent = products.filter(p => p.stock > 0 && p.stock <= 2).length;
+      document.getElementById('statTotalOrders').textContent = orders.length;
+
+      // Render Products Rows
+      tbody.innerHTML = products.map(product => {
+        const isSoldOut = product.stock === 0;
+        const isLow = product.stock > 0 && product.stock <= 2;
+        const statusText = isSoldOut ? 'SOLD OUT' : (isLow ? 'LOW STOCK' : 'IN STOCK');
+        const statusColor = isSoldOut ? '#DC2626' : (isLow ? '#D97706' : '#15803D');
+        const mainImg = product.colors && product.colors[0] ? product.colors[0].images[0] : '';
+
+        return `
+          <tr>
+            <td>
+              <img src="${mainImg}" alt="${product.name}" style="width: 48px; height: 60px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border-subtle);">
+            </td>
+            <td>
+              <strong style="color: var(--maroon); font-family: monospace; font-size: 0.95rem;">${product.id}</strong>
+            </td>
+            <td>
+              <strong>${product.name}</strong>
+              <div style="font-size: 0.78rem; color: var(--charcoal-muted);">${product.fabric}</div>
+            </td>
+            <td style="text-transform: capitalize;">${product.category}</td>
+            <td>
+              <span style="font-size: 0.78rem; padding: 0.2rem 0.5rem; background: var(--cream); border-radius: 4px; border: 1px solid var(--border-gold);">
+                ${product.loom}
+              </span>
+            </td>
+            <td><strong>₹${product.price.toLocaleString('en-IN')}</strong></td>
+            <td>
+              <div class="admin-stock-control">
+                <button class="stock-btn-step" onclick="stepStock('${product.id}', -1)" title="Minus 1">−</button>
+                <input class="stock-value-input" type="number" min="0" value="${product.stock}" onchange="changeStockDirect('${product.id}', this.value)">
+                <button class="stock-btn-step" onclick="stepStock('${product.id}', 1)" title="Plus 1">+</button>
+              </div>
+            </td>
+            <td>
+              <span style="font-size: 0.75rem; font-weight: 700; color: ${statusColor}; background: ${isSoldOut ? '#FEE2E2' : (isLow ? '#FEF3C7' : '#DCFCE7')}; padding: 0.25rem 0.6rem; border-radius: 4px;">
+                ${statusText}
+              </span>
+            </td>
+            <td>
+              <div style="display: flex; gap: 0.4rem;">
+                <button class="btn btn-outline btn-sm" style="padding: 0.3rem 0.6rem; font-size: 0.78rem;" onclick="testOrderProduct('${product.id}')" ${isSoldOut ? 'disabled style="opacity:0.4"' : ''} title="Simulate a customer order (-1)">
+                  -1 Test Order
+                </button>
+                <a href="product.html?id=${product.id}" target="_blank" class="btn btn-sm" style="border: 1px solid var(--border-gold); padding: 0.3rem 0.6rem; font-size: 0.78rem;" title="View on customer website">
+                  View ↗
+                </a>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      // Render Orders Rows
+      if (ordersTbody) {
+        if (orders.length === 0) {
+          ordersTbody.innerHTML = `
+            <tr>
+              <td colspan="7" style="text-align: center; color: var(--charcoal-muted); padding: 2rem;">
+                No orders logged yet. Complete a checkout on the website or click '-1 Test Order' above to see orders queue here!
+              </td>
+            </tr>
+          `;
+        } else {
+          ordersTbody.innerHTML = orders.slice(0, 10).map(order => `
+            <tr>
+              <td><strong style="color: var(--maroon); font-family: monospace;">#${order.orderId}</strong></td>
+              <td><span style="font-family: monospace;">${order.productId}</span></td>
+              <td>
+                <strong>${order.productName}</strong>
+                <div style="font-size: 0.78rem; color: var(--charcoal-muted);">${order.color}</div>
+              </td>
+              <td><strong>${order.quantity}</strong></td>
+              <td><strong>₹${order.totalAmount.toLocaleString('en-IN')}</strong></td>
+              <td><span style="font-size: 0.8rem; color: var(--charcoal-muted);">${new Date(order.date).toLocaleDateString('en-IN', { hour: '2-digit', minute: '2-digit' })}</span></td>
+              <td>
+                <span style="font-size: 0.75rem; background: #DCFCE7; color: #15803D; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 600;">
+                  India Post Speed Post
+                </span>
+              </td>
+            </tr>
+          `).join('');
+        }
+      }
+    }
+
+    function stepStock(productId, delta) {
+      const product = window.NooluDB.getById(productId);
+      if (product) {
+        const next = Math.max(0, product.stock + delta);
+        window.NooluDB.updateStock(productId, next);
+        renderAdminTable();
+      }
+    }
+
+    function changeStockDirect(productId, val) {
+      window.NooluDB.updateStock(productId, parseInt(val, 10) || 0);
+      renderAdminTable();
+    }
+
+    function testOrderProduct(productId) {
+      const res = window.NooluDB.decrementStock(productId, 1, {
+        customerName: 'Admin Test Shopper',
+        customerPhone: '+91 98765 43210'
+      });
+      if (res.success) {
+        showToast(`Order #${res.order.orderId} logged: -1 applied to ${res.order.productName}!`, 'success');
+        renderAdminTable();
+      } else {
+        showToast(res.message, 'error');
+      }
+    }
+
+    function simulateRandomOrder() {
+      const available = window.NooluDB.getAll().filter(p => p.stock > 0);
+      if (available.length === 0) {
+        showToast('All sarees are currently Sold Out! Increase stock first.', 'error');
+        return;
+      }
+      const randomProduct = available[Math.floor(Math.random() * available.length)];
+      testOrderProduct(randomProduct.id);
+    }
+
+    function openAddSareeModal() {
+      document.getElementById('addSareeModal').style.display = 'flex';
+    }
+
+    function handleAddNewSaree(e) {
+      e.preventDefault();
+      const sku = document.getElementById('newSku').value.trim();
+      const name = document.getElementById('newName').value.trim();
+      const category = document.getElementById('newCategory').value;
+      const loom = document.getElementById('newLoom').value;
+      const price = parseInt(document.getElementById('newPrice').value, 10);
+      const stock = parseInt(document.getElementById('newStock').value, 10);
+
+      window.NooluDB.addProduct({
+        id: sku,
+        name: name,
+        tagline: `${loom} ${category} weave with traditional motifs`,
+        category: category,
+        fabric: `${category.charAt(0).toUpperCase() + category.slice(1)} Blend`,
+        loom: loom,
+        price: price,
+        stock: stock,
+        featured: false,
+        badge: "New Arrival",
+        colors: [
+          {
+            name: "Classic Colorway",
+            hex: "#7E1C2B",
+            images: ["https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=80"]
+          }
+        ],
+        description: `Handcrafted ${name} curated for the Noolu collection.`,
+        specs: {
+          "Fabric": `${category.toUpperCase()}`,
+          "Loom": loom,
+          "Length": "6.25 meters with blouse piece"
+        },
+        washCare: ["Gentle hand wash in cold water", "Dry in shade"],
+        shippingInfo: "Dispatched via India Post Speed Parcel."
+      });
+
+      document.getElementById('addSareeModal').style.display = 'none';
+      document.getElementById('addSareeForm').reset();
+      showToast(`Added ${sku} to inventory!`, 'success');
+      renderAdminTable();
+    }
+
+    window.addEventListener('noolu:stock-updated', renderAdminTable);
+    document.addEventListener('DOMContentLoaded', renderAdminTable);
+  </script>
+</body>
+</html>

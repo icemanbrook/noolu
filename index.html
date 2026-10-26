@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOOLU — Every Thread Tells a Story | Handcrafted Indian Sarees</title>
+  <meta name="description" content="Discover timeless Indian weaves curated for modern grace. Authentic Ilkal, Silk, and Cotton sarees with pan-India delivery via India Post.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Ribbon -->
+  <div class="announcement-bar">
+    <span>Free Pan-India Delivery via <strong>India Post Speed Parcel</strong> • Debut Drop Live</span>
+  </div>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo-wrap">
+        <img src="assets/images/noolu-logo.jpg" alt="Noolu Emblem" class="brand-logo-img">
+        <div class="brand-logo-text">
+          <span class="brand-logo-name">NOOLU</span>
+          <span class="brand-logo-tagline">Every thread tells a story</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="shop.html">The Collection</a></li>
+          <li><a href="story.html">Our Story</a></li>
+          <li><a href="contact.html">Care & Contact</a></li>
+          <li><a href="admin.html" style="color: var(--gold-dark); font-weight: 600;">Inventory Admin</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-sm btn-outline" onclick="openWhatsAppInquiry()" style="gap: 0.4rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          Concierge
+        </button>
+
+        <button class="btn-icon js-open-cart" aria-label="Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="cart-count-badge" style="display: none;">0</span>
+        </button>
+
+        <button class="btn-icon mobile-menu-btn" aria-label="Toggle Menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="hero-pill">
+          <span>✦ First Collection Showcase</span>
+        </div>
+        <h1 class="hero-title">
+          Where timeless weaves meet <em>everyday grace</em>.
+        </h1>
+        <p class="hero-lead">
+          NOOLU is a celebration of authentic Indian textiles — from the heritage Tope Teni pallus of North Karnataka's Ilkal to breezy summer cottons and celebratory silks. Thoughtfully curated for women who wear their stories.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="shop.html" class="btn btn-primary">
+            Explore All Sarees
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="story.html" class="btn btn-outline">Read Our Journey</a>
+        </div>
+
+        <div class="hero-badges-row">
+          <div class="hero-badge-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            <span>Handloom & Powerloom Disclosed</span>
+          </div>
+          <div class="hero-badge-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            <span>India Post Pan-India Delivery</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual-card">
+        <div class="hero-image-frame">
+          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=80" alt="Noolu Handloom Drape">
+        </div>
+        <div class="hero-floating-quote">
+          <p>"Every thread tells a story."</p>
+          <span>— The Noolu Philosophy</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Curated Weave Categories -->
+  <section class="category-strip">
+    <div class="container">
+      <div class="ornament-divider">
+        <span class="ornament-icon">❦</span>
+      </div>
+      <h2 class="section-title">Curated by Craft & Fabric</h2>
+      <p class="section-subtitle">Explore our premiere categories, handpicked from master weaving clusters.</p>
+
+      <div class="category-tiles-grid">
+        <!-- Category 1 -->
+        <div class="category-card">
+          <div class="category-card-media">
+            <img src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=700&q=80" alt="Heritage Ilkal Sarees">
+          </div>
+          <div class="category-card-body">
+            <span class="category-tag">Heritage Weave</span>
+            <h3>Ilkal Sarees</h3>
+            <p>Featuring the iconic red Tope Teni pallu, Chikki Paras temple borders, and breathable silk-cotton blends from Karnataka.</p>
+            <a href="shop.html?category=ilkal" class="category-link">
+              Shop Ilkal Weaves →
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="category-card">
+          <div class="category-card-media">
+            <img src="https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=700&q=80" alt="Combed Cotton Sarees">
+          </div>
+          <div class="category-card-body">
+            <span class="category-tag">All-Day Comfort</span>
+            <h3>Everyday Cottons</h3>
+            <p>Featherweight 100-count combed cottons and cool linen blends designed for morning meetings and relaxed evenings.</p>
+            <a href="shop.html?category=cotton" class="category-link">
+              Shop Cotton Weaves →
+            </a>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="category-card">
+          <div class="category-card-media">
+            <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=700&q=80" alt="Celebration Silks">
+          </div>
+          <div class="category-card-body">
+            <span class="category-tag">Festive Splendor</span>
+            <h3>Occasion Silks</h3>
+            <p>Lustrous raw silks and fluid tissue drapes woven with subtle antique zari for family celebrations and milestones.</p>
+            <a href="shop.html?category=silk" class="category-link">
+              Shop Festive Silks →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Saree Showcase (Dynamically populated with live stock) -->
+  <section class="products-section">
+    <div class="container">
+      <div class="ornament-divider">
+        <span class="ornament-icon">✦</span>
+      </div>
+      <h2 class="section-title">The Debut Drop</h2>
+      <p class="section-subtitle">A preview of our signature 10–15 pieces. Each saree is one-of-a-kind or produced in micro-batches.</p>
+
+      <div class="product-grid" id="featuredProductsGrid">
+        <!-- Rendered via JS -->
+      </div>
+
+      <div style="text-align: center; margin-top: 3.5rem;">
+        <a href="shop.html" class="btn btn-outline" style="min-width: 220px;">
+          View Complete Catalog (All Weaves) →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder Welcome Note Section -->
+  <section class="story-spotlight-section">
+    <div class="container container-narrow">
+      <div class="story-card-wrapper">
+        <div class="story-grid">
+          <div>
+            <span class="story-quote-tag">A Note from the Founder</span>
+            <h2 class="story-title">Turning uncertainty into passion</h2>
+            <div class="story-body-text">
+              <p>
+                "My journey with <strong>NOOLU</strong> began during a time of uncertainty. When I lost my job, I found myself wondering what the next chapter of my life would look like."
+              </p>
+              <p>
+                "I decided to take a step forward and create an opportunity of my own. That’s when the idea of building a saree brand began. What started as a small idea soon became NOOLU — a journey driven by passion, creativity, and the desire to build something authentic."
+              </p>
+              <p>
+                <em>"From everyday grace to special occasions, we can't wait to bring you sarees that feel as beautiful as they look."</em>
+              </p>
+            </div>
+
+            <div class="founder-signature">
+              <strong>With love, Bhoomika</strong>
+              <span>Founder & Curator, NOOLU</span>
+            </div>
+          </div>
+
+          <div class="story-visual-wrap">
+            <div class="story-card-img-frame">
+              <img src="assets/images/noolu-welcome.png" alt="Welcome to the Noolu Family" style="width: 100%;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Craft Values -->
+  <section class="craft-values-section">
+    <div class="container">
+      <div class="craft-values-grid">
+        <div class="craft-value-item">
+          <div class="craft-icon-circle">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+          </div>
+          <h4>Authentic Craft Clusters</h4>
+          <p>We work directly with artisans across Bagalkot, Guledgudda, and beyond, supporting generational loom communities.</p>
+        </div>
+
+        <div class="craft-value-item">
+          <div class="craft-icon-circle">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+          </div>
+          <h4>India Post Pan-India Reach</h4>
+          <p>Reliable door-to-door delivery across every Indian pin code, dispatched within 24–48 hours with full speed post tracking.</p>
+        </div>
+
+        <div class="craft-value-item">
+          <div class="craft-icon-circle">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          </div>
+          <h4>Personal WhatsApp Care</h4>
+          <p>Unsure about drape weight, color pairing, or blouse stitching? Tap to chat with us anytime for 1-on-1 assistance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIP WhatsApp Community Banner -->
+  <section class="vip-banner-section">
+    <div class="container vip-banner-inner">
+      <h2>Step into the Noolu Circle</h2>
+      <p>Join our exclusive WhatsApp community for first looks at upcoming handloom drops, behind-the-scenes loom visits, and private subscriber perks.</p>
+      <div class="vip-cta-row">
+        <button class="btn btn-whatsapp" onclick="openWhatsAppInquiry()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+          Join WhatsApp VIP Community
+        </button>
+        <a href="shop.html" class="btn btn-outline" style="border-color: var(--gold-light); color: var(--gold-light);">
+          Browse Sarees
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="brand-logo-wrap">
+            <img src="assets/images/noolu-logo.jpg" alt="Noolu" class="brand-logo-img">
+            <div class="brand-logo-text">
+              <span class="brand-logo-name" style="color: var(--gold-light);">NOOLU</span>
+              <span class="brand-logo-tagline" style="color: var(--sand);">Every thread tells a story</span>
+            </div>
+          </div>
+          <p>A boutique celebration of beautiful sarees, timeless weaves, and the enduring elegance of Indian tradition.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="shop.html?category=ilkal">Ilkal Sarees</a></li>
+            <li><a href="shop.html?category=cotton">Everyday Cottons</a></li>
+            <li><a href="shop.html?category=silk">Occasion Silks</a></li>
+            <li><a href="shop.html">Debut Collection</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>About Noolu</h4>
+          <ul>
+            <li><a href="story.html">Bhoomika's Journey</a></li>
+            <li><a href="story.html#craft">Weaving Clusters</a></li>
+            <li><a href="contact.html#care">Wash & Saree Care</a></li>
+            <li><a href="contact.html#shipping">India Post Shipping</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Concierge & Orders</h4>
+          <ul>
+            <li><a href="javascript:void(0)" onclick="openWhatsAppInquiry()">WhatsApp Inquiries</a></li>
+            <li><a href="contact.html">Send a Note</a></li>
+            <li><a href="admin.html">Inventory Manager</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 NOOLU. All rights reserved. Handcrafted in India.</span>
+        <span>India Post Parcel Delivery Across All Pin Codes</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Concierge Pill -->
+  <a href="javascript:void(0)" onclick="openWhatsAppInquiry()" class="floating-concierge-pill" aria-label="Chat on WhatsApp">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+    <span>Chat with Bhoomika</span>
+  </a>
+
+  <!-- Cart Slide-Over Drawer -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart">
+    <div class="cart-drawer-header">
+      <h3>Your Saree Bag</h3>
+      <button class="btn-icon" id="cartDrawerClose" aria-label="Close Bag">✕</button>
+    </div>
+    <div class="cart-drawer-items" id="cartDrawerItems">
+      <!-- Populated via main.js -->
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-shipping-note">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        <span>Eligible for Free Speed Post Delivery across India</span>
+      </div>
+      <div class="cart-summary-row">
+        <span>Subtotal</span>
+        <span class="cart-total-price" id="cartTotalPrice">₹0</span>
+      </div>
+      <button class="btn btn-primary btn-block" id="cartCheckoutBtn">
+        Confirm Order & Decrement Stock (-1)
+      </button>
+      <div style="text-align: center; margin-top: 0.75rem;">
+        <span style="font-size: 0.75rem; color: var(--charcoal-muted);">Instant live inventory test • Zero setup fee</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Scripts -->
+  <script src="data/sarees.js"></script>
+  <script src="assets/js/inventory.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    // Render featured products on Home Page
+    function renderFeaturedProducts() {
+      const grid = document.getElementById('featuredProductsGrid');
+      if (!grid) return;
+
+      const products = window.NooluDB.getAll().filter(p => p.featured || p.stock > 0).slice(0, 4);
+
+      grid.innerHTML = products.map(product => {
+        const isSoldOut = product.stock <= 0;
+        const isLow = product.stock > 0 && product.stock <= 2;
+        const mainImg = product.colors && product.colors[0] ? product.colors[0].images[0] : '';
+        const hoverImg = product.colors && product.colors[0] && product.colors[0].images[1] ? product.colors[0].images[1] : mainImg;
+
+        let stockBadgeHtml = `
+          <div class="stock-indicator">
+            <span class="stock-dot ${isSoldOut ? 'sold-out' : (isLow ? 'low' : '')}"></span>
+            <span>${isSoldOut ? 'Sold Out' : (isLow ? `Only ${product.stock} left!` : `${product.stock} in stock`)}</span>
+          </div>
+        `;
+
+        const colorDotsHtml = (product.colors || []).map(c => 
+          `<span class="color-dot" style="background: ${c.hex};" title="${c.name}"></span>`
+        ).join('');
+
+        return `
+          <div class="product-card" data-product-id="${product.id}">
+            <div class="product-card-media">
+              <span class="product-badge-pill">${product.badge || product.loom}</span>
+              <span class="product-sku-tag">${product.id}</span>
+              <a href="product.html?id=${product.id}">
+                <img src="${mainImg}" alt="${product.name}" loading="lazy">
+              </a>
+            </div>
+
+            <div class="product-card-body">
+              <div class="product-fabric-meta">
+                <span>${product.fabric} • ${product.loom}</span>
+                ${stockBadgeHtml}
+              </div>
+
+              <h3 class="product-title">
+                <a href="product.html?id=${product.id}">${product.name}</a>
+              </h3>
+
+              <div class="product-card-colors">
+                ${colorDotsHtml}
+              </div>
+
+              <div class="product-price-row">
+                <span class="product-price">₹${product.price.toLocaleString('en-IN')}</span>
+                ${product.originalPrice ? `<span class="product-original-price">₹${product.originalPrice.toLocaleString('en-IN')}</span>` : ''}
+              </div>
+
+              <div class="product-card-actions">
+                <a href="product.html?id=${product.id}" class="btn btn-primary btn-sm">
+                  View Saree Details
+                </a>
+                <button class="btn btn-outline btn-sm" onclick="directBuyNow('${product.id}')" ${isSoldOut ? 'disabled style="opacity:0.5"' : ''} title="Instant Order & -1 Stock">
+                  ${isSoldOut ? 'Sold Out' : 'Buy Now'}
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Refresh stock live on page without full reload
+    function refreshProductStockDisplay(detail) {
+      renderFeaturedProducts();
+    }
+
+    document.addEventListener('DOMContentLoaded', renderFeaturedProducts);
+  </script>
+</body>
+</html>
